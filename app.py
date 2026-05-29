@@ -52,7 +52,7 @@ st.markdown("""
 
 You play as **Bitberto**.
 
-**Fotoncio sends a hidden quantum bit using one of three secret bases: Z, X, or Y.
+Fotoncio sends a hidden quantum bit using one of three secret bases: Z, X, or Y.
 
 Your job is to choose the correct basis.
 
