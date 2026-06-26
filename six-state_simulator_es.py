@@ -47,6 +47,14 @@ def elegir_rol():
 
     return rol
 
+def preguntar_si_no(pregunta):
+    while True:
+        respuesta = input(pregunta + " (si/no): ").lower().strip()
+        if respuesta in ["si", "s"]:
+            return True
+        if respuesta in ["no", "n"]:
+            return False
+        print("Por favor, responde 'si' o 'no'.")
 
 def simular_six_state_protocol():
     rol = elegir_rol()
@@ -60,8 +68,7 @@ def simular_six_state_protocol():
         print("\n😈 Eres Evetron. Vas a espiar automáticamente.")
         evetron_activo = True
     else:
-        respuesta = input("¿Evetron va a espiar? si/no: ").lower().strip()
-        evetron_activo = (respuesta == "si")
+        evetron_activo = preguntar_si_no(f"¿{EVETRON} va a espiar? sí/no: ")
 
     # Generación
     bits_fotoncio = generar_lista(BITS, cantidad)
