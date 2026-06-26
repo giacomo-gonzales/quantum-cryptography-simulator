@@ -179,7 +179,7 @@ El programa mostrará:
 ## Conceptos usados
 
 - Criptografía cuántica  
-- Protocolo BB84  
+- Protocolo de Seis Estados 
 - Bits  
 - Bases de medición  
 - Clave compartida  
