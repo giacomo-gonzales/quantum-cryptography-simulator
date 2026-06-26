@@ -1,4 +1,4 @@
-# BB84 Simulator
+# Quantum Cryptography Simulator
 
 ## 🚀 Live Demo
 
@@ -13,39 +13,37 @@ Play the game here:
 
 Educational simulator of the BB84 quantum cryptography protocol using Python.
 
-This project shows how Fotoncio and Bitberto can generate a shared key using random bases, while Evetron attempts to eavesdrop on the communication.
+This project demonstrates the core principles of quantum secure communication, showing how data can be exchanged and how eavesdropping attempts are detected.
 
 ---
 
 ## Characters
 
-- **Fotoncio**: sender of the bits  
-- **Bitberto**: receiver who measures the bits  
-- **Evetron**: eavesdropper trying to intercept the communication  
+- **Photonzo**: The quantum sender (the "photons" source). 
+- **Bitbert**: The player (receiver) who measures the incoming quantum bits.  
+- **Evetron**: The eavesdropper trying to intercept the transmission. 
 
 ---
 
-## What does it simulate?
+# 🧠 How it works
+The simulator implements a version of the Six-State Protocol (an extension of BB84):
 
-The program simulates a simplified version of the BB84 protocol:
+1- Preparation: Photonzo sends bits using three random bases (X, Y, Z).
 
-1. Fotoncio generates random bits  
-2. Fotoncio chooses random bases: `Z` or `X`  
-3. Bitberto also chooses random bases  
-4. Evetron may attempt to eavesdrop  
-5. Only the bits where Fotoncio and Bitberto used the same basis are kept  
-6. These bits form a shared key  
-7. If errors are detected, eavesdropping may have occurred  
+2- Measurement: Bitbert chooses bases to measure the incoming bits.
+
+3- Eavesdropping: If active, Evetron intercepts and measures the bits. In this protocol, this causes even more disturbances, making eavesdropping easier to detect.
+
+4- Sifting: Bits are kept only if sender and receiver bases match.
+
+5- Security Check: Errors in matching bits suggest that an eavesdropper was present.
 
 ---
 
-## Why is this important?
+ℹ️ Protocol Note
+This simulator is based on the Six-State Protocol (1998). While it shares the fundamental logic of BB84, it uses three bases (X, Y, and Z) and six possible states. This approach increases the sensitivity for detecting eavesdropping compared to the original two-base BB84 protocol.
 
-BB84 demonstrates a key idea of quantum cryptography:
-
-> If someone tries to measure quantum information, they may disturb it and be detected.
-
-This simulator does not use real photons, but helps to understand the logic behind the protocol.
+Note: This is an educational implementation and may not perfectly replicate the full physical complexity of the Six-State protocol.
 
 ---
 
