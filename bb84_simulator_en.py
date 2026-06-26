@@ -1,7 +1,7 @@
 import random
 
-FOTONCIO = "Fotoncio"
-BITBERTO = "Bitberto"
+PHOTONZO = "Photonzo"
+BITBERT = "Bitbert"
 EVETRON = "Evetron"
 
 BASES = ["Z", "X"]
@@ -35,8 +35,8 @@ def ask_amount():
 
 def choose_role():
     print("Choose your role:")
-    print(f"1. Play as {FOTONCIO}")
-    print(f"2. Play as {BITBERTO}")
+    print(f"1. Play as {PHOTONZO}")
+    print(f"2. Play as {BITBERT}")
     print(f"3. Play as {EVETRON}")
 
     role = input("Enter 1, 2, or 3: ").strip()
@@ -63,7 +63,7 @@ def ask_yes_no(question):
 def simulate_bb84():
     role = choose_role()
 
-    print(f"\n=== BB84 SIMULATOR (ENGLISH): {FOTONCIO}, {BITBERTO}, and {EVETRON} ===\n")
+    print(f"\n=== BB84 SIMULATOR (ENGLISH): {PHOTONZO}, {BITBERT}, and {EVETRON} ===\n")
 
     amount = ask_amount()
 
@@ -75,9 +75,9 @@ def simulate_bb84():
         evetron_active = ask_yes_no(f"Will {EVETRON} eavesdrop? yes/no: ")
 
     # Generate random bits and bases
-    bits_fotoncio = generate_list(BITS, amount)
-    bases_fotoncio = generate_list(BASES, amount)
-    bases_bitberto = generate_list(BASES, amount)
+    bits_photonzo = generate_list(BITS, amount)
+    bases_photonzo = generate_list(BASES, amount)
+    bases_bitbert = generate_list(BASES, amount)
 
     # Evetron intercepts and measures the bits
     if evetron_active:
@@ -86,56 +86,56 @@ def simulate_bb84():
 
         for i in range(amount):
             intercepted_bit = measure(
-                bits_fotoncio[i],
-                bases_fotoncio[i],
+                bits_photonzo[i],
+                bases_photonzo[i],
                 bases_evetron[i]
             )
             bits_after_evetron.append(intercepted_bit)
     else:
         bases_evetron = ["-"] * amount
-        bits_after_evetron = bits_fotoncio.copy()
+        bits_after_evetron = bits_photonzo.copy()
 
-    # Bitberto measures the received bits
-    bits_bitberto = []
+    # Bitbert measures the received bits
+    bits_bitbert = []
 
     for i in range(amount):
         received_bit = measure(
             bits_after_evetron[i],
-            bases_fotoncio[i],
-            bases_bitberto[i]
+            bases_photonzo[i],
+            bases_bitbert[i]
         )
-        bits_bitberto.append(received_bit)
+        bits_bitbert.append(received_bit)
 
     # Create the shared key using only matching bases
-    key_fotoncio = []
-    key_bitberto = []
+    key_photonzo = []
+    key_bitbert = []
 
     for i in range(amount):
-        if bases_fotoncio[i] == bases_bitberto[i]:
-            key_fotoncio.append(bits_fotoncio[i])
-            key_bitberto.append(bits_bitberto[i])
+        if bases_photonzo[i] == bases_bitbert[i]:
+            key_photonzo.append(bits_photonzo[i])
+            key_bitbert.append(bits_bitbert[i])
 
     # Count mismatches in the shared key
     errors = 0
 
-    for i in range(len(key_fotoncio)):
-        if key_fotoncio[i] != key_bitberto[i]:
+    for i in range(len(key_photonzo)):
+        if key_photonzo[i] != key_bitbert[i]:
             errors += 1
 
     # Results based on the selected role
     print("\n--- RESULTS BASED ON YOUR ROLE ---")
 
     if role == "1":
-        print(f"\nYou are {FOTONCIO}.")
-        show_list("Your original bits", bits_fotoncio)
-        show_list("Your bases", bases_fotoncio)
-        show_list(f"{BITBERTO}'s public bases", bases_bitberto)
+        print(f"\nYou are {PHOTONZO}.")
+        show_list("Your original bits", bits_photonzo)
+        show_list("Your bases", bases_photonzo)
+        show_list(f"{BITBERT}'s public bases", bases_bitbert)
 
     elif role == "2":
-        print(f"\nYou are {BITBERTO}.")
-        show_list("Your bases", bases_bitberto)
-        show_list("Your measured bits", bits_bitberto)
-        show_list(f"{FOTONCIO}'s public bases", bases_fotoncio)
+        print(f"\nYou are {BITBERT}.")
+        show_list("Your bases", bases_bitbert)
+        show_list("Your measured bits", bits_bitbert)
+        show_list(f"{PHOTONZO}'s public bases", bases_photonzo)
 
     elif role == "3":
         print(f"\nYou are {EVETRON}.")
@@ -145,23 +145,23 @@ def simulate_bb84():
 
     # Public information
     print("\n--- PUBLIC INFORMATION ---")
-    show_list(f"{FOTONCIO}'s bases", bases_fotoncio)
-    show_list(f"{BITBERTO}'s bases", bases_bitberto)
+    show_list(f"{PHOTONZO}'s bases", bases_photonzo)
+    show_list(f"{BITBERT}'s bases", bases_bitbert)
 
     # Shared key
     print("\n--- SHARED KEY ---")
-    print(f"Only the bits where {FOTONCIO} and {BITBERTO} used the same basis are kept.")
+    print(f"Only the bits where {PHOTONZO} and {BITBERT} used the same basis are kept.")
 
-    if len(key_fotoncio) == 0:
+    if len(key_photonzo) == 0:
         print("No key was generated because the bases never matched.")
     else:
-        show_list(f"{FOTONCIO}'s key", key_fotoncio)
-        show_list(f"{BITBERTO}'s key", key_bitberto)
+        show_list(f"{PHOTONZO}'s key", key_photonzo)
+        show_list(f"{BITBERT}'s key", key_bitbert)
 
     # Eavesdropping detection
     print("\n--- EAVESDROPPING DETECTION ---")
 
-    if len(key_fotoncio) == 0:
+    if len(key_photonzo) == 0:
         print("Security could not be analyzed because no shared key was generated.")
 
     elif errors > 0:
@@ -181,7 +181,7 @@ def simulate_bb84():
     # Summary
     print("\n--- SUMMARY ---")
     print(f"Simulated bits: {amount}")
-    print(f"Matching bases: {len(key_fotoncio)}")
+    print(f"Matching bases: {len(key_photonzo)}")
     print(f"Detected errors: {errors}")
 
     if evetron_active:
