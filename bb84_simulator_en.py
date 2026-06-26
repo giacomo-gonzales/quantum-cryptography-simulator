@@ -60,10 +60,10 @@ def ask_yes_no(question):
         print("Please answer yes or no.")
 
 
-def simulate_bb84():
+def simulate_six_state_protocol():
     role = choose_role()
 
-    print(f"\n=== BB84 SIMULATOR (ENGLISH): {PHOTONZO}, {BITBERT}, and {EVETRON} ===\n")
+    print(f"\n=== SIX-STATE PROTOCOL SIMULATOR (ENGLISH): {PHOTONZO}, {BITBERT}, and {EVETRON} ===\n")
 
     amount = ask_amount()
 
@@ -190,4 +190,4 @@ def simulate_bb84():
         print(f"Real status: {EVETRON} did not intervene.")
 
 
-simulate_bb84()
+simulate_six_state_protocol()
