@@ -28,7 +28,7 @@ This project demonstrates the core principles of quantum secure communication, s
 # 🧠 How it works
 The simulator implements a version of the Six-State Protocol (an extension of BB84):
 
-1- Preparation: Photonzo sends bits using three random bases (X, Y, Z).
+1- Preparation: Photonzo sends bits using three random bases (Z, X, Y).
 
 2- Measurement: Bitbert chooses bases to measure the incoming bits.
 
