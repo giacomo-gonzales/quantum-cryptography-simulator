@@ -4,7 +4,7 @@ PHOTONZO = "Photonzo"
 BITBERT = "Bitbert"
 EVETRON = "Evetron"
 
-BASES = ["Z", "X"]
+BASES = ["Z", "X", "Y"]
 BITS = [0, 1]
 
 
