@@ -4,7 +4,7 @@ FOTONCIO = "Fotoncio"
 BITBERTO = "Bitberto"
 EVETRON = "Evetron"
 
-BASES = ["Z", "X"]
+BASES = ["Z", "X", "Y"]
 BITS = [0, 1]
 
 
@@ -48,10 +48,10 @@ def elegir_rol():
     return rol
 
 
-def simular_bb84():
+def simular_six_state_protocol():
     rol = elegir_rol()
 
-    print("\n=== SIMULADOR BB84 (ESPAÑOL): Fotoncio, Bitberto y Evetron ===\n")
+    print("\n=== SIMULADOR DEL PROTOCOLO DE SEIS ESTADOS (ESPAÑOL): Fotoncio, Bitberto y Evetron ===\n")
 
     cantidad = pedir_cantidad()
 
@@ -178,4 +178,4 @@ def simular_bb84():
         print("Estado real: Evetron NO intervino.")
 
 
-simular_bb84()
+simular_six_state_protocol()
