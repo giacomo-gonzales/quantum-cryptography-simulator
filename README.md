@@ -43,7 +43,7 @@ The simulator implements a version of the Six-State Protocol (an extension of BB
 
 ---
 
-ℹ️ Protocol Note
+# ℹ️ Protocol Note
 
 This simulator is based on the Six-State Protocol (1998). While it shares the fundamental logic of BB84, it uses three bases (X, Y, and Z) and six possible states. This approach increases the sensitivity for detecting eavesdropping compared to the original two-base BB84 protocol.
 
