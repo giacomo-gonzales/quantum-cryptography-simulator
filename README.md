@@ -11,7 +11,9 @@ Play the game here:
 
 ## 🇺🇸 English
 
-Educational simulator of the BB84 quantum cryptography protocol using Python.
+Educational simulator of a Quantum Key Distribution (QKD) protocol using Python.
+
+While inspired by the classic BB84 protocol, this simulator implements the Six-State Protocol, which utilizes three measurement bases (Z, X, and Y) instead of two. This increases the sensitivity of eavesdropping detection, as any measurement by an intruder introduces more detectable noise into the transmission.
 
 This project demonstrates the core principles of quantum secure communication, showing how data can be exchanged and how eavesdropping attempts are detected.
 
@@ -26,6 +28,7 @@ This project demonstrates the core principles of quantum secure communication, s
 ---
 
 # 🧠 How it works
+
 The simulator implements a version of the Six-State Protocol (an extension of BB84):
 
 1- Preparation: Photonzo sends bits using three random bases (Z, X, Y).
@@ -41,6 +44,7 @@ The simulator implements a version of the Six-State Protocol (an extension of BB
 ---
 
 ℹ️ Protocol Note
+
 This simulator is based on the Six-State Protocol (1998). While it shares the fundamental logic of BB84, it uses three bases (X, Y, and Z) and six possible states. This approach increases the sensitivity for detecting eavesdropping compared to the original two-base BB84 protocol.
 
 Note: This is an educational implementation and may not perfectly replicate the full physical complexity of the Six-State protocol.
@@ -54,7 +58,7 @@ You need Python installed.
 Run:
 
 ```bash
-python bb84_simulator_en.py
+python six-state_simulator_en.py
 ```
 You can also copy the code and run it in Google Colab.
 
@@ -82,7 +86,7 @@ The program will display:
 ## Concepts used
 
 - Quantum cryptography
-- BB84 protocol
+- Six-State protocol
 - Bits
 - Measurement bases
 - Shared key
@@ -93,53 +97,52 @@ The program will display:
 
 ## ⚠️ Limitations
 
-This is an educational simulation.
+This is an educational simulation. It does not use real quantum hardware or physical photons.
 
-It does not implement real quantum cryptography or use quantum hardware.
-
-Its purpose is to explain the basic behavior of BB84 in a simple way.
+Its purpose is to demonstrate the logical principles of QKD and the impact of the No-Cloning Theorem in a simplified environment.
 
 ---
 
 ## 🇪🇸 Español
 
-Simulador educativo del protocolo de criptografía cuántica BB84 usando Python.
+Simulador educativo de un protocolo de Distribución Cuántica de Claves (QKD) desarrollado en Python.
 
-Este proyecto muestra cómo Fotoncio y Bitberto pueden generar una clave compartida usando bases aleatorias, mientras Evetron intenta espiar la comunicación.
+Aunque está inspirado en el clásico protocolo BB84, este simulador implementa el Protocolo de Seis Estados (Six-State Protocol), el cual utiliza tres bases de medición (Z, X e Y) en lugar de dos. Esto incrementa la sensibilidad en la detección de espionaje, ya que cualquier medición realizada por un intruso introduce una mayor cantidad de ruido detectable en la transmisión.
+
+Este proyecto demuestra los principios fundamentales de la comunicación cuántica segura, mostrando cómo pueden intercambiarse datos y cómo se detectan los intentos de interceptación o espionaje.
 
 ---
 
 ## Personajes
 
-- **Fotoncio**: emisor de los bits.
-- **Bitberto**: receptor que mide los bits.
-- **Evetron**: espía que intenta interceptar la comunicación.
+- **Fotoncio**: El emisor cuántico (la fuente de los "fotones").
+- **Bitberto**: El jugador (receptor) que mide los bits cuánticos entrantes.
+- **Evetron**: El espía que intenta interceptar la transmisión.
 
 ---
 
-## ¿Qué simula?
+## 🧠 Cómo funciona
 
-El programa simula una versión sencilla del protocolo BB84:
+El simulador implementa una versión del Protocolo de Seis Estados (Six-State Protocol), una extensión de BB84:
 
-1. Fotoncio genera bits aleatorios.
-2. Fotoncio elige bases aleatorias: `Z` o `X`.
-3. Bitberto también elige bases aleatorias.
-4. Evetron puede intentar espiar.
-5. Solo se conservan los bits donde Fotoncio y Bitberto usaron la misma base.
-6. Esos bits forman una clave compartida.
-7. Si hay errores, se detecta posible espionaje.
+1. Preparación: Photonzo envía bits utilizando tres bases aleatorias (Z, X e Y).
 
----
+2. Medición: Bitbert elige bases para medir los bits cuánticos recibidos.
 
-## ¿Por qué es importante?
+3. Intercepción: Si está activo, Evetron intercepta y mide los bits. En este protocolo, esto provoca aún más perturbaciones, haciendo que la presencia de un espía sea más fácil de detectar.
 
-BB84 demuestra una idea central de la criptografía cuántica:
+4. Depuración (Sifting): Los bits se conservan únicamente cuando las bases del emisor y del receptor coinciden.
 
-> Si alguien intenta medir la información cuántica, puede alterar los resultados y ser detectado.
-
-Este simulador no usa fotones reales, pero ayuda a entender la lógica del protocolo.
+5. Verificación de seguridad: Los errores en los bits coincidentes sugieren que hubo un espía presente durante la transmisión.
 
 ---
+## ℹ️ Nota sobre el protocolo
+
+Este simulador está basado en el Protocolo de Seis Estados (1998). Aunque comparte la lógica fundamental del protocolo BB84, utiliza tres bases (X, Y y Z) y seis estados posibles. Este enfoque aumenta la sensibilidad para detectar intentos de espionaje en comparación con el protocolo BB84 original, que emplea únicamente dos bases.
+
+Nota: Esta es una implementación educativa y puede no reproducir perfectamente toda la complejidad física del Protocolo de Seis Estados.
+
+--- 
 
 ## Cómo ejecutar el programa
 
@@ -148,7 +151,7 @@ Necesitas tener Python instalado.
 Ejecuta:
 
 ```bash
-python bb84_simulator_es.py
+python six-state_simulator_es.py
 ```
 También puedes copiar el código y probarlo en Google Colab.
 
@@ -187,16 +190,14 @@ El programa mostrará:
 
 ## ⚠️ Limitaciones
 
-Este proyecto es una simulación educativa.
+Esta es una simulación educativa. No utiliza hardware cuántico real ni fotones físicos.
 
-No implementa criptografía cuántica real ni usa hardware cuántico.  
-
-Su objetivo es explicar el funcionamiento básico de BB84 de forma sencilla.
+Su propósito es demostrar los principios lógicos de la distribución cuántica de claves (QKD) y el impacto del teorema de no clonación en un entorno simplificado.
 
 ---
 
 ## 👨‍💻 Autor
 
-Created by **giiiacomobl** as an educational project on programming and quantum cryptography.
+Created by **giacomo-gonzales** as an educational project on programming and quantum cryptography.
 
-Creado por **giiiacomobl** como proyecto educativo de programación y criptografía cuántica.
+Creado por **giacomo-gonzales** como proyecto educativo de programación y criptografía cuántica.
